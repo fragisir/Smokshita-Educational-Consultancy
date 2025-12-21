@@ -45,6 +45,7 @@ export default function ContactSection() {
                 <div>
                   <h3 className="font-bold text-gray-800">Email</h3>
                   <p className="text-gray-600">smokshita.edu@gmail.com</p>
+                  <p className="text-gray-600 text-sm mt-1">tickets@smokshita-educational.p.tawk.email</p>
                 </div>
               </div>
 
