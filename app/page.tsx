@@ -1,8 +1,10 @@
 import HeroSection from "@/components/HeroSection";
-import ServiceHighlights from "@/components/ServiceHighlights";
 import QuickHighlights from "@/components/QuickHighlights";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import SuccessStories from "@/components/SuccessStories";
+import ProcessFlow from "@/components/ProcessFlow";
+import LocationSection from "@/components/LocationSection";
+import ExpertiseSection from "@/components/ExpertiseSection";
 
 export default function Home() {
   return (
@@ -10,9 +12,11 @@ export default function Home() {
       <main>
         <HeroSection />
         <QuickHighlights />
-        <ServiceHighlights />
+        <ExpertiseSection />
         <WhyChooseUs />
+        <ProcessFlow />
         <SuccessStories />
+        <LocationSection />
       </main>
     </div>
   );

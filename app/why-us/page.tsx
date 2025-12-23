@@ -6,9 +6,9 @@ export default function WhyUsPage() {
   return (
     <div className="pt-8 pb-16">
       <div className="container mx-auto px-4 mb-4">
-        <h1 className="text-4xl font-bold text-blue-900 border-l-8 border-blue-600 pl-4 py-2">Why Choose Us?</h1>
-        <p className="mt-4 text-gray-600 max-w-2xl">
-          We pride ourselves on honesty, transparency, and a high success rate.
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 border-l-8 border-blue-600 pl-4 py-2 font-outfit">Why Choose Smokshita?</h1>
+        <p className="mt-6 text-gray-600 text-lg max-w-2xl leading-relaxed">
+          At Smokshita International Education, we offer professional <span className="text-blue-700 font-semibold">education counseling</span> and <span className="text-blue-700 font-semibold">student visa guidance</span> built on a foundation of absolute transparency.
         </p>
       </div>
       <WhyChooseUs />

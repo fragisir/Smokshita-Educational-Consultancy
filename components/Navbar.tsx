@@ -62,12 +62,12 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
-          <Link
-            href="/book-counseling"
+          <a
+            href="mailto:smokshita.education@gmail.com"
             className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg transform hover:-translate-y-0.5 transition-all text-sm"
           >
-            Book Counseling
-          </Link>
+            Email Us
+          </a>
         </div>
 
 
@@ -100,13 +100,13 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/book-counseling"
+              <a
+                href="mailto:smokshita.education@gmail.com"
                 onClick={() => setIsOpen(false)}
                 className="bg-blue-600 text-white text-center py-3 rounded-lg font-bold shadow-md"
               >
-                Book Counseling
-              </Link>
+                Email Us
+              </a>
 
             </div>
           </motion.div>
