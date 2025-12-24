@@ -48,6 +48,18 @@ export default function CustomChatWidget() {
     return () => clearTimeout(timer);
   }, [isOpen]);
 
+  useEffect(() => {
+    // Disable body scroll when chat is open on mobile
+    if (isOpen && window.innerWidth < 768) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const handleUserAction = (text: string) => {
     if (!text.trim()) return;
 
@@ -135,7 +147,7 @@ export default function CustomChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] font-sans">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] font-sans">
       {/* Floating Teaser Bubble */}
       <AnimatePresence>
         {!isOpen && showTeaser && (
@@ -143,10 +155,10 @@ export default function CustomChatWidget() {
             initial={{ opacity: 0, x: 20, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="absolute bottom-20 right-0 w-48 bg-white p-3 rounded-2xl shadow-xl border border-blue-50 cursor-pointer mb-2"
+            className="absolute bottom-20 right-0 w-40 md:w-48 bg-white p-3 rounded-2xl shadow-xl border border-blue-50 cursor-pointer mb-2"
             onClick={() => setIsOpen(true)}
           >
-            <p className="text-xs font-semibold text-blue-900 leading-tight">
+            <p className="text-[11px] md:text-xs font-semibold text-blue-900 leading-tight">
               👋 Any questions about studying abroad? I'm here to help!
             </p>
             <div className="absolute bottom-[-6px] right-6 w-3 h-3 bg-white border-r border-b border-blue-50 rotate-45"></div>
@@ -165,10 +177,10 @@ export default function CustomChatWidget() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-blue-600 to-blue-800 text-white rounded-2xl shadow-[0_8px_30px_rgb(37,99,235,0.4)] transition-all overflow-hidden"
+            className="group relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-tr from-blue-600 to-blue-800 text-white rounded-2xl shadow-[0_8px_30px_rgb(37,99,235,0.4)] transition-all overflow-hidden"
           >
-            <MessageCircle size={30} className="group-hover:scale-110 transition-transform" />
-            <span className="absolute top-3 right-3 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse" />
+            <MessageCircle size={26} className="md:w-[30px] md:h-[30px] group-hover:scale-110 transition-transform" />
+            <span className="absolute top-2.5 right-2.5 md:top-3 md:right-3 w-2.5 h-2.5 md:w-3 md:h-3 bg-green-400 rounded-full border-2 border-white animate-pulse" />
           </motion.button>
         ) : null}
       </AnimatePresence>
@@ -177,13 +189,13 @@ export default function CustomChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ y: 100, opacity: 0, scale: 0.9, transformOrigin: "bottom right" }}
+            initial={{ y: 20, opacity: 0, scale: 0.95, transformOrigin: "bottom right" }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: 100, opacity: 0, scale: 0.9 }}
-            className="bg-white/95 backdrop-blur-xl w-[360px] md:w-[400px] rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-white/20 overflow-hidden flex flex-col h-[600px]"
+            exit={{ y: 20, opacity: 0, scale: 0.95 }}
+            className="bg-white/95 backdrop-blur-xl w-[calc(100vw-2rem)] sm:w-[360px] md:w-[400px] rounded-[1.5rem] md:rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] border border-white/20 overflow-hidden flex flex-col h-[500px] md:h-[600px] max-h-[80vh] md:max-h-[none]"
           >
             {/* Premium Header */}
-            <div className="bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 p-6 flex justify-between items-center text-white relative">
+            <div className="bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 p-4 md:p-6 flex justify-between items-center text-white relative">
               <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
                  <Sparkles size={100} />
               </div>
@@ -204,15 +216,15 @@ export default function CustomChatWidget() {
               </div>
               <button 
                 onClick={() => setIsOpen(false)} 
-                className="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl transition-all border border-white/10"
+                className="bg-white/10 hover:bg-white/20 p-3 rounded-xl transition-all border border-white/10"
                 aria-label="Minimize"
               >
-                <X size={20} />
+                <X size={22} />
               </button>
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto px-5 py-6 space-y-6 scrollbar-hide bg-[#F8FAFC]">
+            <div className="flex-1 overflow-y-auto px-4 py-5 md:px-5 md:py-6 space-y-4 md:space-y-6 scrollbar-hide bg-[#F8FAFC]">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -287,7 +299,7 @@ export default function CustomChatWidget() {
             </div>
 
             {/* Premium Input Area */}
-            <div className="p-5 bg-white border-t border-gray-100">
+            <div className="p-4 md:p-5 bg-white border-t border-gray-100">
               <div className="flex items-center gap-3 bg-gray-50 p-2.5 rounded-[1.5rem] border border-gray-200 focus-within:ring-2 focus-within:ring-blue-100 focus-within:bg-white focus-within:border-blue-200 transition-all group">
                 <input
                   type="text"
